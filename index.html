@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AppModule">
+  <head>
+    <title>Heat Exchanger RDCC</title>
+    <meta name="description" content="Events" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="ui-bootstrap-csp.css" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <script src="https://morgul.github.io/ui-bootstrap4/ui-bootstrap-tpls-3.0.6.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      var AppModule = angular.module("AppModule", ["ui.bootstrap"])
+      AppModule.controller("uhv", function ($scope, $http, $uibModal) {
+        $scope.showDetail = function (obj) {
+          var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: "modal.html?_=" + new Date() + "",
+            controller: "heatex",
+            backdrop: "static",
+            keyboard: false,
+            size: "lg",
+            resolve: {
+              items: function () {
+                console.log("ค่าที่จะส่งไป คือ objnew คือ")
+                console.log(obj)
+                return obj
+              },
+            },
+          })
+
+          modalInstance.result.then(
+            function () {},
+            function (para) {
+              // para คือ ค่าส่งมาหลังจาก ปิดหน้าต่าง
+              console.log("para")
+              console.log(para)
+              if (para == "add") {
+                get_dashborad($scope, ServiceApp) // หลังจาก save แล้ว ให้ update
+              }
+            }
+          )
+        }
+
+        $http.get("heatexchangerdata.json").then(
+          function successCallback(response) {
+            $scope.codes = response.data
+            console.log("Heat Exchanger Data : ")
+            console.log(response.data)
+          },
+          function errorCallback(response) {
+            console.log("Unable to perform get request")
+          }
+        )
+      }).filter("myfilter", function () {
+        return function (x) {
+          var i,
+            c,
+            txt = ""
+          for (i = 0; i < x.length; i++) {
+            c = x[i]
+
+            c = c.toUpperCase()
+
+            txt += c
+          }
+          return txt
+        }
+      })
+      AppModule.controller(
+        "heatex",
+        function ($scope, $uibModalInstance, items) {
+          $scope.data = items
+          console.log("items ที่รับมาคือ", items)
+        }
+      )
+    </script>
+  </head>
+
+  <body class="container">
+    <p id="demo"></p>
+
+    <nav style="text-align: center">
+      <img src="img/heat1.png" alt="heat1_pic" width="400px" height="250px" />
+      <img src="img/heat2.png" alt="heat2_pic" width="400px" height="250px" />
+    </nav>
+    <div ng-controller="uhv">
+      <h2
+        class="text-center text-white"
+        style="background-color: rgb(35, 104, 221)"
+      >
+        Heat Exchanger Data
+
+        <span class="text-warning">: RDCC</span>
+      </h2>
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table table-hover">
+            <thead>
+              <tr style="background-color: rgb(16, 233, 182)">
+                <th scope="col">Plant</th>
+                <th scope="col">Heat Exchanger No.</th>
+                <th scope="col">Equipment Name</th>
+                <th scope="col">View Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background-color: rgb(212, 220, 220)">
+                <th scope="col">
+                  <input
+                    ng-model="s.Plant"
+                    placeholder="ค้นหา Plant"
+                    class="form-control input-md"
+                  />
+                </th>
+                <th scope="col">
+                  <input
+                    ng-model="s.HeatExchangeNo"
+                    placeholder="ค้นหา HeatExchangeNo"
+                    class="form-control input-md"
+                  />
+                </th>
+                <th scope="col">
+                  <input
+                    ng-model="s.EqName"
+                    placeholder="ค้นหา EqName"
+                    class="form-control input-md"
+                  />
+                </th>
+                <th scope="col">
+                  <input ng-model="s.EqName"
+                  placeholder="กดดูรายละเอียด"
+                  class="form-control input-md"/>
+                </th>
+              </tr>
+              <tr
+                class="font-weight-bolder"
+                ng-repeat=" r in  codes.heatexchangerdata | filter:s | limitTo: 400"
+              >
+                <td class="text-left">{{ r.Plant}}</td>
+                <td class="text-left text-danger">{{ r.HeatExchangeNo}}</td>
+                <td class="text-left text-primary">{{ r.EqName}}</td>
+                <td class="btn btn-sm btn-warning text-center>
+                  
+                  <div class="container">
+                    <!-- Button to Open the Modal -->
+                    <button
+                      type="button"
+                      class="btn btn-primary text-center"
+                      data-toggle="modal"
+                      ng-click="showDetail(r)"
+                    >
+                      Details
+                    </button>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Heat Exchanger Data</h4>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                            >
+                              &times;
+                            </button>
+                          </div>
+
+                          <!-- Modal body -->
+                          <div class="modal-body">Plant : {{r.Plant}}</div>
+                          <div class="modal-body">
+                            Data : {{r.HeatExchangeNo}}
+                          </div>
+                          <div class="modal-body">EqName : {{r.EqName}}</div>
+                          <div class="modal-body">Class : {{r.Class}}</div>
+                          <div class="modal-body">LastPM : {{r.LastPM}}</div>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-danger"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

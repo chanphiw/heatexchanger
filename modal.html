@@ -1,0 +1,159 @@
+<nav style="text-align: center">
+  <img src="img/heat1.png" alt="heat1_pic" width="400px" height="250px" />
+</nav>
+<div class="container">
+  <button class="btn btn-success">
+    <a
+      class="text-white font-weight-bold"
+      style="text-decoration: none"
+      href="index.html"
+      >Home</a
+    >
+  </button>
+  <hr />
+  <div><h6>Plant : {{data.Plant}}</h6></div>
+  <div><h6>HeatExchangeNo : {{data.HeatExchangeNo}}</h6></div>
+  <div><h6>EqName : {{data.EqName}}</h6></div>
+  <div><h6>Class : {{data.Class}}</h6></div>
+  <div><h6>LastPM : {{data.LastPM}}</h6></div>
+  <div><h6>EqStatus : {{data.EqStatus}}</h6></div>
+  <div><h6>ReportNo : {{data.ReportNo}}</h6></div>
+  <div><h6>TubeSheetCondition : {{data.TubeSheetCondition}}</h6></div>
+  <div><h6>PlugTotalTube : {{data.PlugTotalTube}}</h6></div>
+  <div><h6>ShellCoverChannel : {{data.ShellCoverChannel}}</h6></div>
+  <div><h6>TestShell : {{data.TestShell}}</h6></div>
+  <div><h6>TestTube : {{data.TestTube}}</h6></div>
+  <div><h6>Other : {{data.Other}}</h6></div>
+  <div><h6>ActionPlan : {{data.ActionPlan}}</h6></div>
+  <div><h6>InstallYear : {{data.InstallYear}}</h6></div>
+  <div><h6>DWGNo : {{data.DWGNo}}</h6></div>
+  <div><h6>IDShell : {{data.IDShell}}</h6></div>
+  <div><h6>TubeSize : {{data.TubeSize}}</h6></div>
+  <div><h6>TubeQty : {{data.TubeQty}}</h6></div>
+  <div><h6>TubeLength : {{data.TubeLength}}</h6></div>
+  <div><h6>FluidTube : {{data.FluidTube}}</h6></div>
+  <div><h6>FluidShell : {{data.FluidShell}}</h6></div>
+  <div><h6>MatTube : {{data.MatTube}}</h6></div>
+  <div><h6>MatShell : {{data.MatShell}}</h6></div>
+  <div><h6>MatTubeSheet : {{data.MatTubeSheet}}</h6></div>
+  <div><h6>CorrosionAllowanceShell : {{data.CorrosionAllowanceShell}}</h6></div>
+  <div><h6>CorrosionAllowanceTube : {{data.CorrosionAllowanceTube}}</h6></div>
+  <div><h6>OperatePressureShell : {{data.OperatePressureShell}}</h6></div>
+  <div><h6>HydroTestPressureShell : {{data.HydroTestPressureShell}}</h6></div>
+  <div><h6>HydroTestPressureTube : {{data.HydroTestPressureTube}}</h6></div>
+  <div><h6>TempInOutShell : {{data.TempInOutShell}}</h6></div>
+  <div><h6>TempInOutTube : {{data.TempInOutTube}}</h6></div>
+  <div><h6>WeightUnit : {{data.WeightUnit}}</h6></div>
+  <div><h6>WeightBundle : {{data.WeightBundle}}</h6></div>
+  <div><h6>WeightFullWater : {{data.WeightFullWater}}</h6></div>
+  <div><h6>Remark : {{data.Remark}}</h6></div>
+  <hr />
+
+  <!-- Button to Open the Modal -->
+  <button class="btn btn-success">
+    <a
+      class="text-white font-weight-bold"
+      style="text-decoration: none"
+      href="index.html"
+      >Home</a
+    >
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#myModal"
+  >
+    Details
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Heat Exchanger Data</h4>
+          <button type="button" class="close" data-dismiss="modal">
+            &times;
+          </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body"><h6>Plant : {{data.Plant}}</h6></div>
+        <div class="modal-body">
+          <h6>HeatExchangeNo : {{data.HeatExchangeNo}}</h6>
+        </div>
+        <div class="modal-body"><h6>EqName : {{data.EqName}}</h6></div>
+        <div class="modal-body"><h6>Class : {{data.Class}}</h6></div>
+        <div class="modal-body"><h6>LastPM : {{data.LastPM}}</h6></div>
+        <div class="modal-body"><h6>EqStatus : {{data.EqStatus}}</h6></div>
+        <div class="modal-body"><h6>ReportNo : {{data.ReportNo}}</h6></div>
+        <div class="modal-body">
+          <h6>TubeSheetCondition : {{data.TubeSheetCondition}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>PlugTotalTube : {{data.PlugTotalTube}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>ShellCoverChannel : {{data.ShellCoverChannel}}</h6>
+        </div>
+        <div class="modal-body"><h6>TestShell : {{data.TestShell}}</h6></div>
+        <div class="modal-body"><h6>TestTube : {{data.TestTube}}</h6></div>
+        <div class="modal-body"><h6>Other : {{data.Other}}</h6></div>
+        <div class="modal-body"><h6>ActionPlan : {{data.ActionPlan}}</h6></div>
+        <div class="modal-body">
+          <h6>InstallYear : {{data.InstallYear}}</h6>
+        </div>
+        <div class="modal-body"><h6>DWGNo : {{data.DWGNo}}</h6></div>
+        <div class="modal-body"><h6>IDShell : {{data.IDShell}}</h6></div>
+        <div class="modal-body"><h6>TubeSize : {{data.TubeSize}}</h6></div>
+        <div class="modal-body"><h6>TubeQty : {{data.TubeQty}}</h6></div>
+        <div class="modal-body"><h6>TubeLength : {{data.TubeLength}}</h6></div>
+        <div class="modal-body"><h6>FluidTube : {{data.FluidTube}}</h6></div>
+        <div class="modal-body"><h6>FluidShell : {{data.FluidShell}}</h6></div>
+        <div class="modal-body"><h6>MatTube : {{data.MatTube}}</h6></div>
+        <div class="modal-body"><h6>MatShell : {{data.MatShell}}</h6></div>
+        <div class="modal-body">
+          <h6>MatTubeSheet : {{data.MatTubeSheet}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>CorrosionAllowanceShell : {{data.CorrosionAllowanceShell}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>CorrosionAllowanceTube : {{data.CorrosionAllowanceTube}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>OperatePressureShell : {{data.OperatePressureShell}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>HydroTestPressureShell : {{data.HydroTestPressureShell}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>HydroTestPressureTube : {{data.HydroTestPressureTube}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>TempInOutShell : {{data.TempInOutShell}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>TempInOutTube : {{data.TempInOutTube}}</h6>
+        </div>
+        <div class="modal-body"><h6>WeightUnit : {{data.WeightUnit}}</h6></div>
+        <div class="modal-body">
+          <h6>WeightBundle : {{data.WeightBundle}}</h6>
+        </div>
+        <div class="modal-body">
+          <h6>WeightFullWater : {{data.WeightFullWater}}</h6>
+        </div>
+        <div class="modal-body"><h6>Remark : {{data.Remark}}</h6></div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

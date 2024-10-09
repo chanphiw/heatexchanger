@@ -1,0 +1,51 @@
+body {
+  background: rgb(204, 204, 204);
+}
+page[size="A4"] {
+  background: #f5f6f7;
+  width: 21cm;
+  height: 29.7cm;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(206, 143, 143, 0.5);
+  border: 1.25cm solid #f5f6f7;
+  font-family: "Mallory", Arial, Verdana, Sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #56d3ee;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav-right {
+  float: right;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #dda3ef;
+}
+
+@media print {
+  body,
+  page[size="A4"] {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
