@@ -99,7 +99,7 @@
       AppModule.controller(
         "heatex",
         function ($scope, $uibModalInstance, items) {
-          $scope.data = items // เก็บข้อมูลที่รับมาใน data
+          $scope.data = items // เก็บข้อมูลที่รับมาใน data เพื่อส่งไปใช้งานใน modal.html
           console.log("items ที่รับมาคือ", items)
         }
       )
@@ -108,11 +108,16 @@
 
   <body class="container">
     <p id="demo"></p>
+    <script>
+      const d = new Date()
+      document.getElementById("demo").innerHTML = d
+    </script>
 
     <nav style="text-align: center">
       <img src="img/heat1.png" alt="heat1_pic" width="400px" height="250px" />
       <img src="img/heat2.png" alt="heat2_pic" width="400px" height="250px" />
     </nav>
+
     <div ng-controller="uhv">
       <h2
         class="text-center text-white"
