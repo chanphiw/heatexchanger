@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="AppModule">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heat Exchanger RDCC</title>
-    <meta name="description" content="Events" />
 
     <link
       rel="stylesheet"
@@ -10,7 +11,11 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="ui-bootstrap-csp.css" />
+    <link
+      rel="stylesheet"
+      href="ui-bootstrap-csp.css"
+      crossorigin="anonymous"
+    />
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -90,10 +95,11 @@
           return txt
         }
       })
+      // modal dialog
       AppModule.controller(
         "heatex",
         function ($scope, $uibModalInstance, items) {
-          $scope.data = items
+          $scope.data = items // เก็บข้อมูลที่รับมาใน data
           console.log("items ที่รับมาคือ", items)
         }
       )
@@ -124,7 +130,7 @@
                 <th scope="col">Plant</th>
                 <th scope="col">Heat Exchanger No.</th>
                 <th scope="col">Equipment Name</th>
-                <th scope="col">View Detail</th>
+                <th scope="col" class="text-center">View Detail</th>
               </tr>
             </thead>
             <tbody>
@@ -151,9 +157,11 @@
                   />
                 </th>
                 <th scope="col">
-                  <input ng-model="s.EqName"
-                  placeholder="กดดูรายละเอียด"
-                  class="form-control input-md"/>
+                  <input
+                    ng-model="s.EqName"
+                    placeholder="กดดูรายละเอียดปุ่มด้านล่าง"
+                    class="form-control input-md"
+                  />
                 </th>
               </tr>
               <tr
@@ -163,13 +171,12 @@
                 <td class="text-left">{{ r.Plant}}</td>
                 <td class="text-left text-danger">{{ r.HeatExchangeNo}}</td>
                 <td class="text-left text-primary">{{ r.EqName}}</td>
-                <td class="btn btn-sm btn-warning text-center>
-                  
+                <td class="btn btn-sm btn-warning col-12">
                   <div class="container">
                     <!-- Button to Open the Modal -->
                     <button
                       type="button"
-                      class="btn btn-primary text-center"
+                      class="btn btn-primary"
                       data-toggle="modal"
                       ng-click="showDetail(r)"
                     >
